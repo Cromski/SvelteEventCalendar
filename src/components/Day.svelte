@@ -6,9 +6,7 @@
     export let month: number
     export let day: number
 
-    let today = new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`).toLocaleDateString("da-dk", {weekday: "short"})
-
-    let date = new Date()
+    $: today = new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`).toLocaleDateString("da-dk", {weekday: "short"})
 
     const getWeekNumber = () => {
         var date = new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`);
@@ -19,7 +17,6 @@
     }
 
     const convertToShorterWeekday = (weekday: string) => {
-        console.log($selectedYearStore, month, day, today)
         if (weekday === "man.") return "Ma"
         else if (weekday === "tirs.") return "Ti"
         else if (weekday === "ons.") return "On"
