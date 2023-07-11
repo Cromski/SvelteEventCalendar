@@ -2,6 +2,7 @@
     
     import selectedYearStore from "../stores/SelectedYearStore";
     import monthsStore from "../stores/MonthsStore";
+    import events from "../events.json"
 
     export let month: number
     export let day: number
@@ -29,12 +30,12 @@
 </script>
 
 
-<div class={today == "lør." ? ` bg-slate-200 flex w-full h-6` : today == "søn." ? ` bg-slate-400 flex w-full h-6` : ` bg-white flex h-6 w-full`}>
+<div class={today == "lør." ? ` bg-slate-200 flex w-full h-6` : today == "søn." ? ` bg-slate-400 flex w-full h-6` : ` bg-white flex h-6 w-full border-b-black border-b-[1px]`}>
     <div class=" min-w-[44px] max-w-[44px] bg-slate-800 text-gray-300 text-xs leading-6">
         <h1 class=" ml-1 inline-block">{day}.</h1>
         <h1 class=" mr-1 inline-block float-right">{convertToShorterWeekday(today)}</h1>
     </div> 
-    <h1 class=" ml-1 mr-auto truncate ">co co co co c</h1>
+    <h1 class=" ml-1 mr-auto truncate ">s</h1>
     {#if today == "man."}
         <h1 class=" mr-1 w-4 text-xs">{getWeekNumber()}</h1>
     {/if}
