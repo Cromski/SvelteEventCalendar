@@ -1,22 +1,17 @@
 <script lang="ts">
     
     import selectedYearStore from "../stores/SelectedYearStore";
-    
-    let selectedYear: number
+    import monthsStore from "../stores/MonthsStore";
+
     export let month: number
     export let day: number
-    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
 
-    selectedYearStore.subscribe(data => {
-        selectedYear = data
-    })
-
-    let today = new Date(`${selectedYear!} ${months[month]} ${day}`).toLocaleDateString("da-dk", {weekday: "short"})
+    let today = new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`).toLocaleDateString("da-dk", {weekday: "short"})
 
     let date = new Date()
 
     const getWeekNumber = () => {
-        var date = new Date(`${selectedYear} ${months[month]} ${day}`);
+        var date = new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`);
         date.setHours(0,0,0,0)
         date.setDate(date.getDate() +3 - (date.getDay() +6) % 7)
         var week1 = new Date(date.getFullYear(), 0, 4)
@@ -24,7 +19,7 @@
     }
 
     const convertToShorterWeekday = (weekday: string) => {
-        console.log(selectedYear, month, day, today)
+        console.log($selectedYearStore, month, day, today)
         if (weekday === "man.") return "Ma"
         else if (weekday === "tirs.") return "Ti"
         else if (weekday === "ons.") return "On"

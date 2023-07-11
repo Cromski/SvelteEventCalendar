@@ -4,20 +4,9 @@
 
     import selectedMonthsStore from "../stores/SelectedMonthsStore";
     import selectedYearStore from "../stores/SelectedYearStore";
+    import monthsStore from "../stores/MonthsStore";
 
-    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
     const daysInMonth = [31, new Date().getFullYear() == 366 ? 29 : 28,31,30,31,30,31,31,30,31,30,31];
-
-    let selectedYear: number;
-    let selectedMonths: number[];
-
-    selectedYearStore.subscribe(data => {
-        selectedYear = data
-    })
-
-    selectedMonthsStore.subscribe(data => {
-        selectedMonths = data
-    })
 
     const viewSizes = [
         {name: "half screen", value: 50},
@@ -28,7 +17,7 @@
     let viewSize = 75
 
     const updateSelectedMonths = (month: number) => {
-        if (selectedMonths.includes(month)) {
+        if ($selectedMonthsStore.includes(month)) {
             selectedMonthsStore.update((value) => {
                 return value.filter((m) => m !== month).sort((a, b) => a-b)
             })
@@ -49,7 +38,7 @@
     <button on:click={() => selectedYearStore.set(new Date().getFullYear()+i)}>{new Date().getFullYear()+i}</button>
 {/each}
 
-{#each months as month, i}
+{#each $monthsStore as month, i}
     <button on:click={() => updateSelectedMonths(i)}>{month}</button>
 {/each} 
 
@@ -58,7 +47,7 @@
 {/each}
 
 <div style={`width: ${viewSize}%`} class=" mx-auto flex justify-center">
-    {#each selectedMonths as month}
+    {#each $selectedMonthsStore as month}
         <Month month={month} daysInMonth={daysInMonth[month]} />
     {/each}
 </div>
