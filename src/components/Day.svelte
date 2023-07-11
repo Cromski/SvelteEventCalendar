@@ -35,7 +35,7 @@
         <h1 class=" ml-1 inline-block">{day}.</h1>
         <h1 class=" mr-1 inline-block float-right">{convertToShorterWeekday(today)}</h1>
     </div> 
-    <h1 class=" ml-1 mr-auto truncate ">s</h1>
+    <h1 class=" ml-1 mr-auto truncate ">{ events.events.find((e) => e.startDate == (day+"-"+month+"-"+$selectedYearStore).toString())?.name }</h1> <!--  day+"-"+month+"-"+$selectedYearStore -->
     {#if today == "man."}
         <h1 class=" mr-1 w-4 text-xs">{getWeekNumber()}</h1>
     {/if}
