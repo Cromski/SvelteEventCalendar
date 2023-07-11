@@ -1,0 +1,19 @@
+{
+    "events": [
+        {
+            "name": "Event 1",
+            "start-date": "18-7-2023",
+            "end-date": "21-7-2023"
+        },
+        {
+            "name": "Event 2",
+            "start-date": "6-8-2023",
+            "end-date": "9-8-2023"
+        },
+        {
+            "name": "Event 3",
+            "start-date": "1-9-2023",
+            "end-date": "4-9-2023"
+        }
+    ]
+}
