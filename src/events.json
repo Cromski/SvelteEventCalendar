@@ -2,27 +2,51 @@
     "events": [
         {
             "id": 1,
-            "name": "Event 1",
-            "startDate": "18-7-2023",
-            "endDate": "21-7-2023"
+            "name": "Budapest Open 2023",
+            "startDate": "15-9-2023",
+            "endDate": "17-9-2023"
         },
         {
             "id": 2,
-            "name": "Event 2",
+            "name": "Budo Cup 2023",
             "startDate": "6-8-2023",
-            "endDate": "9-8-2023"
+            "endDate": "6-8-2023"
         },
         {
             "id": 3,
-            "name": "Event 3",
-            "startDate": "1-9-2023",
-            "endDate": "4-9-2023"
+            "name": "Opstart på efterårssæson 2023",
+            "startDate": "7-8-2023",
+            "endDate": "7-8-2023"
         },
         {
             "id": 4,
-            "name": "Event 4",
-            "startDate": "18-7-2023",
-            "endDate": "21-7-2023"
+            "name": "Lion Cup 2023, Luxemborg",
+            "startDate": "22-9-2023",
+            "endDate": "24-9-2023"
+        },
+        {
+            "id": 5,
+            "name": "Polish Open 2023",
+            "startDate": "6-10-2023",
+            "endDate": "8-10-2023"
+        },
+        {
+            "id": 6,
+            "name": "Euro Grand prix 2023, Plzen",
+            "startDate": "3-11-2023",
+            "endDate": "5-11-2023"
+        },
+        {
+            "id": 7,
+            "name": "DM 2023, Aalborg",
+            "startDate": "17-11-2023",
+            "endDate": "19-11-2023"
+        },
+        {
+            "id": 8,
+            "name": "K1 Series A, Matosinhos (Portugal)",
+            "startDate": "24-11-2023",
+            "endDate": "26-11-2023"
         }
     ]
 }
