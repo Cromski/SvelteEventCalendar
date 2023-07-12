@@ -3,15 +3,15 @@
     import selectedYearStore from "../stores/SelectedYearStore";
     import monthsStore from "../stores/MonthsStore";
     import events from "../events.json"
+    import dayModalStore from "../stores/DayModalStore";
 
     export let month: number
     export let day: number
 
     $: weekday = new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`).toLocaleDateString("da-dk", {weekday: "short"})
 
-    const getUnixTime = (date: Date) => {
-        return Math.floor(date.getTime() / 1000)
-    }
+    const getUnixTime = (date: Date) => Math.floor(date.getTime() / 1000)
+
 
     $: event = events.events.find((e) => 
     getUnixTime(new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`)) >= getUnixTime(new Date(`${e.startDate.split("-")[2]} ${e.startDate.split("-")[1]} ${e.startDate.split("-")[0]}`)) && 
@@ -44,7 +44,11 @@
         <h1 class=" ml-1 inline-block">{day}.</h1>
         <h1 class=" mr-1 inline-block float-right">{convertToShorterWeekday(weekday)}</h1>
     </div> 
-    <h1 class=" ml-1 mr-auto truncate ">{ event == undefined  ? " " : event }</h1> <!--  day+"-"+month+"-"+$selectedYearStore -->
+    {#if event == undefined}
+        <h1 class=" mr-auto"> </h1>
+    {:else}
+        <button class=" ml-1 mr-auto truncate " on:click={() => dayModalStore.set({visible: true, event: event})} >{ event }</button> <!--  day+"-"+month+"-"+$selectedYearStore -->
+    {/if}
     {#if weekday == "man."}
         <h1 class=" mr-1 w-4 text-xs">{getWeekNumber()}</h1>
     {/if}

@@ -5,6 +5,7 @@
     import selectedMonthsStore from "../stores/SelectedMonthsStore";
     import selectedYearStore from "../stores/SelectedYearStore";
     import monthsStore from "../stores/MonthsStore";
+    import FullDayModal from "./FullDayModal.svelte";
 
     const daysInMonth = [31, new Date().getFullYear() == 366 ? 29 : 28,31,30,31,30,31,31,30,31,30,31];
 
@@ -46,10 +47,11 @@
     <button on:click={() => updateViewSize(viewSize.value)}>{viewSize.name}</button>
 {/each}
 
-<div style={`width: ${viewSize}%`} class=" mx-auto flex justify-center">
+<div style={`width: ${viewSize}%`} class=" relative mx-auto flex justify-center">
     {#each $selectedMonthsStore as month}
         <Month month={month} daysInMonth={daysInMonth[month]} />
     {/each}
+    <FullDayModal />
 </div>
 
 
