@@ -31,6 +31,12 @@
             "endDate": "8-10-2023"
         },
         {
+            "id": 9,
+            "name": "ANOTHER ONE",
+            "startDate": "7-10-2023",
+            "endDate": "10-10-2023"
+        },
+        {
             "id": 6,
             "name": "Euro Grand prix 2023, Plzen",
             "startDate": "3-11-2023",

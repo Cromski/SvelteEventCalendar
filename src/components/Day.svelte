@@ -13,10 +13,13 @@
     const getUnixTime = (date: Date) => Math.floor(date.getTime() / 1000)
 
 
-    $: event = events.events.find((e) => 
+    $: event = events.events.filter((e) => 
     getUnixTime(new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`)) >= getUnixTime(new Date(`${e.startDate.split("-")[2]} ${e.startDate.split("-")[1]} ${e.startDate.split("-")[0]}`)) && 
-    getUnixTime(new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`)) <= getUnixTime(new Date(`${e.endDate.split("-")[2]} ${e.endDate.split("-")[1]} ${e.endDate.split("-")[0]}`)))?.name
+    getUnixTime(new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`)) <= getUnixTime(new Date(`${e.endDate.split("-")[2]} ${e.endDate.split("-")[1]} ${e.endDate.split("-")[0]}`)))
 
+    const listOfEventNames = (eventLst: any) => {
+        return eventLst.map((e: any) => e.name)
+    }
 
     const getWeekNumber = () => {
         var date = new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`);
@@ -47,7 +50,7 @@
     {#if event == undefined}
         <h1 class=" mr-auto"> </h1>
     {:else}
-        <button class=" ml-1 mr-auto truncate " on:click={() => dayModalStore.set({visible: true, event: event})} >{ event }</button> <!--  day+"-"+month+"-"+$selectedYearStore -->
+        <button class=" ml-1 mr-auto truncate " on:click={() => dayModalStore.set({visible: true, event: event})} >{ listOfEventNames(event) }</button> <!--  day+"-"+month+"-"+$selectedYearStore -->
     {/if}
     {#if weekday == "man."}
         <h1 class=" mr-1 w-4 text-xs">{getWeekNumber()}</h1>
