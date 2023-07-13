@@ -18,7 +18,12 @@
     getUnixTime(new Date(`${$selectedYearStore} ${$monthsStore[month]} ${day}`)) <= getUnixTime(new Date(`${e.endDate.split("-")[2]} ${e.endDate.split("-")[1]} ${e.endDate.split("-")[0]}`)))
 
     const listOfEventNames = (eventLst: any) => {
-        return eventLst.map((e: any) => e.name)
+        let theList = eventLst.map((e: any) => e.name)
+        if (theList.length > 1) {
+            return `(${theList.length}): `+theList.join("; ")
+        }
+        return theList.join("; ")
+
     }
 
     const getWeekNumber = () => {
